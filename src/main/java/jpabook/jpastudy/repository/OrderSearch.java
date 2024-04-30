@@ -1,5 +1,6 @@
-package jpabook.jpastudy.domain;
+package jpabook.jpastudy.repository;
 
+import jpabook.jpastudy.domain.OrderStatus;
 import lombok.Getter;
 import lombok.Setter;
 
