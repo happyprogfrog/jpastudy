@@ -1,6 +1,8 @@
 package jpabook.jpastudy.service;
 
+import jpabook.jpastudy.domain.item.Book;
 import jpabook.jpastudy.domain.item.Item;
+import jpabook.jpastudy.domain.item.Movie;
 import jpabook.jpastudy.exception.NotEnoughStockException;
 import jpabook.jpastudy.repository.ItemRepository;
 import org.junit.Test;
@@ -25,58 +27,58 @@ public class ItemServiceTest {
     @Test
     public void 아이템_저장() {
         // given
-        Item item = new Item();
-        item.setName("아이템 A");
-        item.setPrice(1000);
-        item.setStockQuantity(20);
+        Movie movie = new Movie();
+        movie.setName("아이템 A");
+        movie.setPrice(1000);
+        movie.setStockQuantity(20);
 
         // when
-        Long saveId = itemService.saveItem(item);
+        Long saveId = itemService.saveItem(movie);
 
         // then
-        assertEquals(item, itemService.findOne(saveId));
+        assertEquals(movie, itemService.findOne(saveId));
     }
 
     @Test
     public void 재화_증가() {
         // given
-        Item item = new Item();
-        item.setName("아이템 A");
-        item.setPrice(1000);
-        item.setStockQuantity(20);
+        Movie movie = new Movie();
+        movie.setName("아이템 A");
+        movie.setPrice(1000);
+        movie.setStockQuantity(20);
 
         // when
-        item.addStock(10);
+        movie.addStock(10);
 
         // then
-        assertEquals(item.getStockQuantity(), 30);
+        assertEquals(movie.getStockQuantity(), 30);
     }
 
     @Test
     public void 재화_감소() {
         // given
-        Item item = new Item();
-        item.setName("아이템 A");
-        item.setPrice(1000);
-        item.setStockQuantity(20);
+        Movie movie = new Movie();
+        movie.setName("아이템 A");
+        movie.setPrice(1000);
+        movie.setStockQuantity(20);
 
         // when
-        item.removeStock(10);
+        movie.removeStock(10);
 
         // then
-        assertEquals(item.getStockQuantity(), 10);
+        assertEquals(movie.getStockQuantity(), 10);
     }
 
     @Test(expected = NotEnoughStockException.class)
     public void 재화_감소_예외() throws Exception {
         // given
-        Item item = new Item();
-        item.setName("아이템 A");
-        item.setPrice(1000);
-        item.setStockQuantity(20);
+        Movie movie = new Movie();
+        movie.setName("아이템 A");
+        movie.setPrice(1000);
+        movie.setStockQuantity(20);
 
         // when
-        item.removeStock(30);
+        movie.removeStock(30);
 
         // then
         fail("예외가 발생해야 한다");

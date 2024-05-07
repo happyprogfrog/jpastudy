@@ -1,8 +1,9 @@
 package jpabook.jpastudy.exception;
 
 public class NotEnoughStockException extends RuntimeException {
-
-    public NotEnoughStockException() {}
+    public NotEnoughStockException() {
+        super();
+    }
 
     public NotEnoughStockException(String message) {
         super(message);
