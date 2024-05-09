@@ -2,7 +2,7 @@ package jpabook.jpastudy.web;
 
 import jpabook.jpastudy.domain.Member;
 import jpabook.jpastudy.domain.Order;
-import jpabook.jpastudy.repository.OrderSearch;
+import jpabook.jpastudy.repository.order.OrderSearch;
 import jpabook.jpastudy.domain.item.Item;
 import jpabook.jpastudy.service.ItemService;
 import jpabook.jpastudy.service.MemberService;

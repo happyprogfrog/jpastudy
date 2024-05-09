@@ -9,7 +9,7 @@ import jpabook.jpastudy.domain.OrderStatus;
 import jpabook.jpastudy.domain.item.Book;
 import jpabook.jpastudy.domain.item.Item;
 import jpabook.jpastudy.exception.NotEnoughStockException;
-import jpabook.jpastudy.repository.OrderRepository;
+import jpabook.jpastudy.repository.order.OrderRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

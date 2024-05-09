@@ -1,4 +1,4 @@
-package jpabook.jpastudy.repository;
+package jpabook.jpastudy.repository.order;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -98,5 +98,11 @@ public class OrderRepository {
         cq.where(cb.and(criteria.toArray(new Predicate[criteria.size()])));
         TypedQuery<Order> query = em.createQuery(cq).setMaxResults(1000); // 최대 1000 건
         return query.getResultList();
+    }
+
+    public List<Order> findAllWithMemberDelivery() {
+        return em.createQuery(
+                "SELECT o FROM Order o JOIN FETCH o.member m JOIN FETCH o.delivery d", Order.class)
+                .getResultList();
     }
 }
