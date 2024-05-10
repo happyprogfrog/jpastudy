@@ -5,6 +5,7 @@ import jpabook.jpastudy.domain.Category;
 import jpabook.jpastudy.exception.NotEnoughStockException;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
 
 import java.util.ArrayList;
 import java.util.List;
