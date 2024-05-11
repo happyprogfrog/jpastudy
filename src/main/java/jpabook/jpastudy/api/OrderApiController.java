@@ -31,7 +31,7 @@ public class OrderApiController {
     // v1: 엔티티를 조회해서 그대로 반환
     @GetMapping("/api/v1/orders")
     public List<Order> getOrdersV1 () {
-        List<Order> all = orderRepository.findAllByString(new OrderSearch());
+        List<Order> all = orderRepository.findAll(new OrderSearch());
 
         for (Order order : all) {
             order.getMember().getName(); // LAZY 강제 초기화
