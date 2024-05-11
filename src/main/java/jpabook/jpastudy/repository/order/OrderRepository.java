@@ -1,15 +1,12 @@
 package jpabook.jpastudy.repository.order;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
-import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.*;
 import jpabook.jpastudy.domain.*;
 import jpabook.jpastudy.domain.Order;
-import lombok.RequiredArgsConstructor;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -20,10 +17,15 @@ import static jpabook.jpastudy.domain.QMember.member;
 import static jpabook.jpastudy.domain.QOrder.order;
 
 @Repository
-@RequiredArgsConstructor
 public class OrderRepository {
 
     private final EntityManager em;
+    private final JPAQueryFactory query;
+
+    public OrderRepository(EntityManager em) {
+        this.em = em;
+        this.query = new JPAQueryFactory(em);
+    }
 
     public void save(Order order) {
         em.persist(order);
@@ -108,11 +110,6 @@ public class OrderRepository {
     }
 
     public List<Order> findAll(OrderSearch orderSearch) {
-
-        QOrder order = QOrder.order;
-        QMember member = QMember.member;
-
-        JPAQueryFactory query = new JPAQueryFactory(em);
         return query
                 .select(order)
                 .from(order)
